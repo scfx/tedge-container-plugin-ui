@@ -1,0 +1,32 @@
+<c8y-li>
+    <c8y-li-icon [icon]="'package'" style="color:green"></c8y-li-icon>
+
+    <button class="btn-clean text-truncate ng-binding" [routerLink]="['/mqttprotocols', container.id]">
+        {{container.image}}
+    </button>
+
+
+    <c8y-li-action (click)="stop()" icon="stop">
+        Stop
+    </c8y-li-action>
+    <c8y-li-collapse>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 text-truncate">
+                <label class="small ng-binding">Container Id</label>
+                {{container.containerId}}
+            </div>
+            <div class="col-xs-12 col-sm-12 text-truncate">
+                <label class="small ng-binding">Filesystem: </label>
+                {{container.filesystem}}
+            </div>
+            <div class="col-xs-12 col-sm-12 text-truncate">
+                <label class="small ng-binding">Port: </label>
+                <small>{{container.ports}}</small>
+            </div>
+            <div class="col-xs-12 col-sm-12 text-truncate">
+                <label class="small ng-binding">Networks: </label>
+                <small>{{container.networks}}</small>
+            </div>
+        </div>
+    </c8y-li-collapse>
+</c8y-li>

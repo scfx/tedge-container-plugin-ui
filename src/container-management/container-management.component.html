@@ -1,0 +1,51 @@
+<!-- Change from interact-list to interact-grid to display a grid of cards -->
+<c8y-action-bar-item [placement]="'left'" itemClass="navbar-form hidden-xs">
+    <c8y-list-display-switch (onListClassChange)="displayMode($event)"></c8y-list-display-switch>
+</c8y-action-bar-item>
+<ng-container *ngIf="containers.length > 0; else noData">
+    <div class="card-group" [ngClass]="gridOrList">
+        <!-- Add sticky header if needed later-->
+        <ng-container *ngFor="let container of containers">
+
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+                <div class="card">
+                    <!-- Card actions - containing a dropdown -->
+                    <div class="card-actions">
+
+                    </div>
+                    <!-- Card header containing the title -->
+                    <div class="card-header separator">
+                        <div class="card-icon">
+                            <i c8y-icon="c8y-package" class="dlt-c8y-icon-package"></i>
+                        </div>
+                        <!-- Always add the title attribute -->
+                        <div class="card-title" title="BlackBone Black">
+                            {{container.image}}
+                        </div>
+                    </div>
+                    <!-- Card body containing the content -->
+                    <div class="card-block">
+                        <div class="col-xs-12 col-sm-12 text-truncate">
+                            <label class="small ng-binding">Container Id</label>
+                            {{container.containerId}}
+                        </div>
+                        <div class="col-xs-12 col-sm-12 text-truncate">
+                            <label class="small ng-binding">Filesystem: </label>
+                            {{container.filesystem}}
+                        </div>
+                        <div class="col-xs-12 col-sm-12 text-truncate">
+                            <label class="small ng-binding">Port: </label>
+                            <small>{{container.ports}}</small>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 text-truncate">
+                            <label class="small ng-binding">Networks: </label>
+                            <small>{{container.networks}}</small>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </ng-container>
+    </div>
+
+</ng-container>
