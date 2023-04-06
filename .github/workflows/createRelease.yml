@@ -31,7 +31,7 @@ jobs:
       - name: Zip Frontend
         run: |
           cd dist/apps/tedge-container-plugin-ui
-          zip -r -q ../../../../tedge-container-plugin-ui.zip *
+          zip -r -q ../../../tedge-container-plugin-ui.zip *
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
