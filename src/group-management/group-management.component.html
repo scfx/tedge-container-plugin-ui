@@ -2,10 +2,25 @@
 <c8y-action-bar-item [placement]="'left'" itemClass="navbar-form hidden-xs">
     <c8y-list-display-switch (onListClassChange)="displayMode($event)"></c8y-list-display-switch>
 </c8y-action-bar-item>
-<ng-container *ngIf="groups.length > 0; else noData">
+<c8y-action-bar-item itemClass="navbar-form">
+    <div class="input-group input-group-search">
+        <input title="{{ 'Filter' }}" type="search" class="form-control" placeholder="Search…"
+            [(ngModel)]="searchText" />
+        <span class="input-group-addon">
+            <i c8yIcon="search"></i>
+        </span>
+    </div>
+</c8y-action-bar-item>
+<c8y-action-bar-item [placement]="'right'">
+    <button title="Reload" class="btn btn-link" (click)="reload()">
+        <i c8y-icon="refresh" ng-class="{'icon-spin': isLoading}" class="dlt-c8y-icon-refresh" style=""></i>
+        Reload
+    </button>
+</c8y-action-bar-item>
+<ng-container *ngIf="groups && groups.length > 0; else noData">
     <div class="card-group" [ngClass]="gridOrList">
         <!-- Add sticky header if needed later-->
-        <ng-container *ngFor="let group of groups">
+        <ng-container *ngFor="let group of groups | groupFilter : searchText">
 
             <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
                 <div class="card">
@@ -20,7 +35,7 @@
                         </div>
                         <!-- Always add the title attribute -->
                         <div class="card-title" title="BlackBone Black">
-                            {{group.project}}
+                            <c8y-highlight [text]="group.project" [pattern]="searchText"></c8y-highlight>
                         </div>
                     </div>
                     <!-- Card body containing the content if grid -->
@@ -30,7 +45,7 @@
                         </div>
                         <c8y-list-group>
                             <li *ngFor="let container of group.containers">
-                                <container-list-item [container]="container"></container-list-item>
+                                <container-list-item [container]="container" [pattern]="searchText"></container-list-item>
                             </li>
                         </c8y-list-group>
                     </div>

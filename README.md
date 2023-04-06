@@ -1,33 +1,25 @@
-# Cumulocity widget plugin
+# Cumulocity thin-edge.io container plugin UI.
 
-This is the Cumulocity module federation plugin. Plugins can be developed like any Cumulocity application, but can be used at runtime by other applications. Therefore, they export an Angular module which can then be imported by any other application. The exports are defined in `package.json`:
+UI for the tedge-container-plugin ([Link](https://github.com/thin-edge/tedge-container-plugin)) to monitor installed containers and container groups.
 
-```
-"exports": [
-  {
-     "name": "Example widget plugin",
-     "module": "WidgetPluginModule",
-     "path": "./widget/widget-plugin.module.ts",
-     "description": "Adds custom widget"
-  }
-]
-```
+## Plugin summary
+-----
+The plug-in containers 3 tabs that can be added to the devicemanagemet application.
 
-**How to start**
-Run the command below to scaffold a `widget` plugin.
+| Plug-In  | Function |
+|----------|----------|
+|Container Info Tab|Adds a tab to a container service to display all relevant container informations.|
+|Container Management Tab|Adds a tab to the device to monitor containers. The tab can include/exclude the containers hosted within container groups.|
+|Container Group Management Tab| Adds a tab to the device to monitor container groups (aka. docker compose).|
 
-```
-c8ycli new <yourPluginName> widget-plugin
-```
+### Container Info Tab
+The tab will be enabled for all services of type container. Displays the container properties that are stored in the managed Obect.
+![Conatiner Info Screenshot](./doc/container-info.png)
 
-As the app.module is a typical Cumuloctiy application, any new plugin can be tested via the CLI:
+### Container Management Tab
+The tab will be enabled for all devicese with a childAddtion with serviceType=container. Lists all containers in a grid or list.The search can be used for the image name and the project id. The list can include/exclude the containers that are part of a container group.
+![Conatiner Container Management Screensho](./doc/container-management.png)
 
-```
-npm start -- --shell cockpit
-```
-
-In the Module Federation terminology, `widget` plugin is called `remote` and the `cokpit` is called `shell`. Modules provided by this `widget` will be loaded by the `cockpit` application at the runtime. This plugin provides a basic custom widget that can be accessed through the `Add widget` menu.
-
-> Note that the `--shell` flag creates a proxy to the cockpit application and provides` WidgetPluginModule` as an `remote` via URL options.
-
-Also deploying needs no special handling and can be simply done via `npm run deploy`. As soon as the application has exports it will be uploaded as a plugin.
+### Container Group Management Tab
+The tab will be enabled for all devicese with a childAddtion with serviceType=container. Lists all containers that are part of a procet. The filter/search can be used to search for project names or container images.
+![Conatiner Container Management Screensho](./doc/container-group-management.png.png)

@@ -1,8 +1,9 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ContainerService } from '../shared/container-service';
 import { Container } from '../shared/container';
 
+import { IResultList } from '@c8y/client';
 
 @Component({
     selector: 'container-management-tab',
@@ -14,7 +15,10 @@ export class ContainerManagementComponent implements OnInit {
     containers: Container[]
     deviceId: string;
     gridOrList: 'interact-list' | 'interact-grid' = 'interact-grid';
-    constructor(private route: ActivatedRoute, private containerservice: ContainerService) { }
+    searchText: string = '';
+    showContainerGroups: boolean = false;
+    isLoading:boolean = true;
+    constructor(private route: ActivatedRoute, private containerservice: ContainerService, private router: Router) { }
 
     ngOnInit(): void {
         this.deviceId = this.route.snapshot.parent.data.contextData["id"];
@@ -26,6 +30,17 @@ export class ContainerManagementComponent implements OnInit {
     }
 
     async loadData() {
-        this.containers = this.containerservice.getContainers()
+        this.containers = await this.containerservice.getContainers(this.deviceId)
     }
+    
+    remove(serviceId: string) {
+        console.log("Removal of container not supported")
+    }
+
+    reload() {
+        this.isLoading = true;
+        this.searchText = ''
+        this.loadData()
+    }
+
 }

@@ -65,6 +65,12 @@
           "module": "ContainerManagementModule",
           "path": "./src/container-management/container-management.module.ts",
           "description": "Adds a tab to a device to manage containers"
+        },
+        {
+          "name": "Container Info Tab",
+          "module": "ContainerInfoModule",
+          "path": "./src/container-info/container-info.module.ts",
+          "description": "Adds a tab view service details for containers"
         }
       ],
       "remotes": {
@@ -73,6 +79,9 @@
         ],
         "Group-plugin": [
           "GroupManagementModule"
+        ],
+        "Container-Info-plugin": [
+          "ContainerInfoModule"
         ]
       }
     },

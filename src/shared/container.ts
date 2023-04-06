@@ -1,4 +1,5 @@
 export interface Container {
+    id:string,
     containerId: string,
     ports: string,
     command: string
@@ -8,10 +9,16 @@ export interface Container {
     runningFor: string,
     state: string,
     status: string,
-    project?: string
+    project?: string,
+    lastUpdated: string;
 }
 
 export interface ContainerGroup {
     project: string
     containers: Container[]
+}
+
+export interface ContainerParent {
+    name:string
+    id:string | number
 }

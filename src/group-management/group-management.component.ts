@@ -14,6 +14,8 @@ export class GroupManagementComponent implements OnInit {
     groups: ContainerGroup[]
     deviceId: string;
     gridOrList: 'interact-list' | 'interact-grid' = 'interact-grid';
+    searchText:string = '';
+    isLoading:boolean = true;
     constructor(private route: ActivatedRoute, private containerservice: ContainerService) { }
 
     ngOnInit(): void {
@@ -26,7 +28,14 @@ export class GroupManagementComponent implements OnInit {
     }
 
     async loadData() {
-        this.groups = this.containerservice.getContainerGroups();
+        this.groups = await this.containerservice.getContainerGroups(this.deviceId);
+        this.isLoading = false;
+    }
+
+    reload() {
+        this.isLoading = true;
+        this.searchText = ''
+        this.loadData()
     }
 
 }

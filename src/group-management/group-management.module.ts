@@ -4,19 +4,22 @@ import { CoreModule, HOOK_TABS, ViewContext, FormsModule, TabsModule, HOOK_ROUTE
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { GroupManagementComponent } from './group-management.component';
 import { ContainerListItemComponent } from './container-list-item/container-list-item.component';
+import { GroupFilterPipe } from './group-filter.pipe';
+import { ContainerGuard } from '../shared/container.guard';
+
 
 const tabHook =
 {
     provide: HOOK_ROUTE,
     useValue: [
         {
-            path: 'Groups',
+            path: 'ContainerGroups',
             context: ViewContext.Device,
             component: GroupManagementComponent,
-            label: 'Groups',
+            label: 'Container Groups',
             priority: 1000,
             icon: 'packages',
-            //canActivate: [GroupManagementGuard]
+            canActivate: [ContainerGuard]
         }
     ],
     multi: true
@@ -24,7 +27,7 @@ const tabHook =
 
 
 @NgModule({
-    declarations: [GroupManagementComponent, ContainerListItemComponent],
+    declarations: [GroupManagementComponent, ContainerListItemComponent, GroupFilterPipe],
     imports: [
         CoreModule, FormsModule, BsDropdownModule,
     ],
