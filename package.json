@@ -1,7 +1,7 @@
 {
   "name": "tedge-container-plugin-ui",
   "version": "0.0.1",
-  "description": "UI for the tedge container plugin",
+  "description": "UI for the tedge-container-plugin to monitor installed containers and container groups.",
   "scripts": {
     "start": "c8ycli server -u https://felix.eu-latest.cumulocity.com --shell devicemanagement",
     "build": "c8ycli build",
@@ -31,7 +31,8 @@
     "@ngx-translate/core": "14.0.0",
     "rxjs": "~6.6.3",
     "zone.js": "~0.11.7",
-    "@c8y/style": "1016.0.175"
+    "@c8y/style": "1016.0.175",
+    "ngx-bootstrap":"9.0.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "14.0.6",
@@ -60,22 +61,22 @@
       "requiredPlatformVersion": ">=1016.0.0",
       "exports": [
         {
-          "name": "Container Group Management Tab",
-          "module": "GroupManagementModule",
-          "path": "./src/group-management/group-management.module.ts",
-          "description": "Adds a tab to a device to manage container groups (docker compose)"
+          "name": "Container Info Tab",
+          "module": "ContainerInfoModule",
+          "path": "./src/container-info/container-info.module.ts",
+          "description": "Adds a tab to a container service to display all relevant container information."
         },
         {
           "name": "Container Management Tab",
           "module": "ContainerManagementModule",
           "path": "./src/container-management/container-management.module.ts",
-          "description": "Adds a tab to a device to manage containers"
+          "description": "Adds a tab to a device to monitor the installed containers"
         },
         {
-          "name": "Container Info Tab",
-          "module": "ContainerInfoModule",
-          "path": "./src/container-info/container-info.module.ts",
-          "description": "Adds a tab to a service to view container details"
+          "name": "Container Group Management Tab",
+          "module": "GroupManagementModule",
+          "path": "./src/group-management/group-management.module.ts",
+          "description": "Adds a tab to the device to monitor container groups (aka. docker compose)."
         }
       ],
       "remotes": {

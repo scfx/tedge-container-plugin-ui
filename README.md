@@ -10,13 +10,13 @@ The plug-in containers 3 tabs that can be added to the device-management applica
 
 | Plug-In                        | Function                                                                                                                   |
 | ------------------------------ | -------------------------------------------------------------------------------------------------------------------------- |
-| Container Info Tab             | Adds a tab to a container service to display all relevant container informations.                                          |
+| Container Info Tab             | Adds a tab to a container service to display all relevant container information.                                           |
 | Container Management Tab       | Adds a tab to the device to monitor containers. The tab can include/exclude the containers hosted within container groups. |
 | Container Group Management Tab | Adds a tab to the device to monitor container groups (aka. docker compose).                                                |
 
 ### Container Info Tab
 
-The tab will be enabled for all services of type container. Displays the container properties that are stored in the managed Obect.
+The tab will be enabled for all services of type container. Displays the container properties that are stored in the managed Object.
 ![Container Info Screenshot](./doc/container-info.png)
 
 ### Container Management Tab
