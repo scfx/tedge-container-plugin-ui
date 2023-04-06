@@ -1,16 +1,19 @@
 {
-  "name": "thinedge-docker-ui",
-  "version": "1.0.0",
-  "description": "Adds a tab to a manage docker containers via thin-edge",
+  "name": "tedge-container-plugin-ui",
+  "version": "0.0.1",
+  "description": "UI for the tedge container plugin",
   "scripts": {
     "start": "c8ycli server -u https://felix.eu-latest.cumulocity.com --shell devicemanagement",
     "build": "c8ycli build",
     "deploy": "c8ycli deploy -u $C8Y_URL -U $C8Y_USER -T $C8Y_TENANT -P $C8Y_TOKEN -s",
     "postinstall": "ngcc"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [ 
+    "Cumulocity",
+    "Plugin",
+    "Widget"],
+  "author": "Felix Schaede",
+  "license": "Apache 2.0",
   "dependencies": {
     "@angular/animations": "14.0.6",
     "@angular/cdk": "14.1.2",
@@ -43,22 +46,23 @@
   },
   "c8y": {
     "application": {
-      "name": "thinedge-docker-ui",
+      "name": "tedge-container-plugin-ui",
       "description": "Adds tab to manage docker containers to a device",
-      "contextPath": "thinedge-docker-ui",
-      "key": "thinedge-docker-ui-application-key",
+      "contextPath": "tedge-container-plugin-ui",
+      "key": "tedge-container-plugin-ui-key",
       "globalTitle": "Thin-edge Docker UI",
       "tabsHorizontal": true,
       "isPackage": true,
       "noAppSwitcher": true,
       "brandingEntry": "./src/branding/branding.less",
       "package": "plugin",
+      "requiredPlatformVersion": ">=1016.0.0",
       "exports": [
         {
           "name": "Container Group Management Tab",
           "module": "GroupManagementModule",
           "path": "./src/group-management/group-management.module.ts",
-          "description": "Adds a tab to a device to manage container Group (docker compose)"
+          "description": "Adds a tab to a device to manage container groups (docker compose)"
         },
         {
           "name": "Container Management Tab",
@@ -70,7 +74,7 @@
           "name": "Container Info Tab",
           "module": "ContainerInfoModule",
           "path": "./src/container-info/container-info.module.ts",
-          "description": "Adds a tab view service details for containers"
+          "description": "Adds a tab to a service to view container details"
         }
       ],
       "remotes": {

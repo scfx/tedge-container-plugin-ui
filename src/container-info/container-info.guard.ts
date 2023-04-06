@@ -4,9 +4,10 @@ import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class ContainerInfoGuard implements CanActivate {
-
-    canActivate(route: ActivatedRouteSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-        const contextData = route.data.contextData || route.parent.data.contextData;
-        return contextData["serviceType"] == "container"
-    }
+  canActivate(
+    route: ActivatedRouteSnapshot
+  ): Observable<boolean> | Promise<boolean> | boolean {
+    const contextData = route.data.contextData || route.parent.data.contextData;
+    return contextData['serviceType'] == 'container';
+  }
 }

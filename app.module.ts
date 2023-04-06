@@ -1,10 +1,13 @@
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule as ngRouterModule } from '@angular/router';
-import { BootstrapComponent, CoreModule, RouterModule } from '@c8y/ngx-components';
+import {
+  BootstrapComponent,
+  CoreModule,
+  RouterModule,
+} from '@c8y/ngx-components';
 import { CockpitDashboardModule } from '@c8y/ngx-components/context-dashboard';
 import { BsModalRef } from 'ngx-bootstrap/modal';
-
 
 // Translations
 import './locales/de.po'; // <- adding additional strings to the german translation.
@@ -15,9 +18,9 @@ import './locales/de.po'; // <- adding additional strings to the german translat
     ngRouterModule.forRoot([], { enableTracing: false, useHash: true }),
     RouterModule.forRoot(),
     CoreModule.forRoot(),
-    CockpitDashboardModule
+    CockpitDashboardModule,
   ],
   providers: [BsModalRef],
-  bootstrap: [BootstrapComponent]
+  bootstrap: [BootstrapComponent],
 })
-export class AppModule { }
+export class AppModule {}

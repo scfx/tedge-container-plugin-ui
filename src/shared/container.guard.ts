@@ -10,7 +10,10 @@ export class ContainerGuard implements CanActivate {
   canActivate(route: ActivatedRouteSnapshot): Promise<boolean> {
     const id = get(route, 'params.id') || get(route, 'parent.params.id');
     return this.inventoryService
-      .childAdditionsList({ id }, { query: `serviceType eq container`, pageSize: 1 })
+      .childAdditionsList(
+        { id },
+        { query: `serviceType eq container`, pageSize: 1 }
+      )
       .then(result => !!result?.data?.length);
   }
 }
