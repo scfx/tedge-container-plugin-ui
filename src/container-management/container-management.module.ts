@@ -22,7 +22,7 @@ const tabHook = {
       context: ViewContext.Device,
       component: ContainerManagementComponent,
       label: 'Containers',
-      priority: 2000,
+      priority: 1001,
       icon: 'package',
       canActivate: [ContainerGuard],
     },
