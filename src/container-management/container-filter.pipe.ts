@@ -7,16 +7,19 @@ import { Container } from 'src/shared/container';
 export class ContainerFilterPipe implements PipeTransform {
   private filter(container: Container, filterStr: string): boolean {
     let matchName =
-      container.image &&
+      (container.image &&
       container.image
         .toLocaleLowerCase()
-        .includes(filterStr.toLocaleLowerCase());
+        .includes(filterStr.toLocaleLowerCase())) || (container.name &&
+          container.name
+            .toLocaleLowerCase()
+            .includes(filterStr.toLocaleLowerCase()));
     let matchContainerId =
       container.containerId &&
       container.containerId
         .toLocaleLowerCase()
         .includes(filterStr.toLocaleLowerCase());
-    return matchName || matchContainerId;
+    return container.containerId && (matchName || matchContainerId);
   }
 
   transform(

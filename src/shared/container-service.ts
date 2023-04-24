@@ -43,6 +43,7 @@ export class ContainerService {
   private managedObjectToContainer(mo: IManagedObject): Container {
     return {
       id: mo.id,
+      name: mo.name,
       containerId: mo.containerId,
       ports: mo.ports,
       command: mo.command,

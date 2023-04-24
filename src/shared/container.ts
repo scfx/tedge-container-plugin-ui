@@ -1,5 +1,6 @@
 export interface Container {
   id: string;
+  name: string;
   containerId: string;
   ports: string;
   command: string;
