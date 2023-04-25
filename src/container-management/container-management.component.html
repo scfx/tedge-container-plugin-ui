@@ -65,12 +65,23 @@
                 <li>
                   <button
                     type="button"
-                    title="View"
+                    title="Restart"
                     (click)="remove(container.id)">
                     <i
-                      c8yicon="minus-circle"
-                      class="text-danger dlt-c8y-icon-minus-circle"></i>
-                    Remove
+                      c8yicon="restart"
+                      class="dlt-c8y-icon-refresh"></i>
+                    Restart
+                  </button>
+                </li>
+                <li>
+                  <button
+                    type="button"
+                    title="Stop"
+                    (click)="remove(container.id)">
+                    <i
+                      c8yicon="stop"
+                      class="dlt-c8y-icon-stop"></i>
+                    Stop
                   </button>
                 </li>
               </ul>

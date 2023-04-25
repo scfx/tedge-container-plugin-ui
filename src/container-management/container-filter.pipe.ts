@@ -19,7 +19,9 @@ export class ContainerFilterPipe implements PipeTransform {
       container.containerId
         .toLocaleLowerCase()
         .includes(filterStr.toLocaleLowerCase());
-    return container.containerId && (matchName || matchContainerId);
+    let notUninstalled = 
+        container.status && container.status != "uninstalled"
+    return container.containerId && notUninstalled && (matchName || matchContainerId);
   }
 
   transform(
