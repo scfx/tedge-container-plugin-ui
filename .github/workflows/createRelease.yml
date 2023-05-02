@@ -28,7 +28,7 @@ jobs:
         id: version
         run:
           echo "plugin_version=$(jq -r .version package.json)" >> $GITHUB_OUTPUT &
-          echo "c8y_version=$(jq -r '.dependencies["@c8y/client"]' package.json | cut -d. -f1)" >> $GITHUB_OUTPUT
+          echo "c8y_version=$(jq -r '.dependencies["@c8y/client"]' package.json)" >> $GITHUB_OUTPUT
       - name: Create Build
         run: npm run build-ci --if-present
       - name: Zip Frontend
@@ -41,8 +41,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
         with:
-          tag_name: ${{ steps.version.outputs.c8y_version }}
-          release_name: Version ${{ steps.version.outputs.plugin_version }}
+          tag_name: Version ${{ steps.version.outputs.plugin_version }}
+          release_name: ${{ steps.version.outputs.c8y_version }}
           draft: false
           prerelease: false
       - name: Upload Release Asset Frontend
