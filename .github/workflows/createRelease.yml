@@ -24,11 +24,11 @@ jobs:
       - run: npm ci --no-optional
       - name: Install jq
         run: sudo apt-get install -y jq
-      - name: Read @c8y/client version
-        id: c8y_version
-        run: |
-          echo "c8y_version=$(jq -r .version package.json)" >> $GITHUB_OUTPUT
-          echo "::debug::Version is ${{ steps.c8y_version.outputs.c8y_version }}"
+      - name: Read versions in package.json
+        id: version
+        run:
+          echo "plugin_version=$(jq -r .version package.json)" >> $GITHUB_OUTPUT &
+          echo "c8y_version=$(jq -r .dependencies.@c8y/client package.json)" >> $GITHUB_OUTPUT
       - name: Create Build
         run: npm run build-ci --if-present
       - name: Zip Frontend
@@ -40,10 +40,9 @@ jobs:
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-          C8Y_VERSION: ${{ steps.c8y_version.outputs.c8y_version }}
         with:
-          tag_name: ${{ steps.c8y_version.outputs.c8y_version }}
-          release_name: Release ${{ steps.c8y_version.outputs.c8y_version }}
+          tag_name: ${{ steps.version.outputs.c8y_version }}
+          release_name: Release ${{ steps.version.outputs.plugin_version }}
           draft: false
           prerelease: false
       - name: Upload Release Asset Frontend
