@@ -19,7 +19,7 @@ jobs:
       - name: build
         uses: actions/setup-node@v2
         with:
-          node-version: 14.x
+          node-version: 14.21.3
       - run: npm ci --no-optional
       - name: Read @c8y/client version
         id: c8y_version
