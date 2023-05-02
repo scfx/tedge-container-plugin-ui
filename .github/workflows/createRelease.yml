@@ -22,10 +22,12 @@ jobs:
           node-version: 14.x
       - run: npm install npm -g
       - run: npm ci --no-optional
+      - name: Install jq
+        run: sudo apt-get install -y jq
       - name: Read @c8y/client version
         id: c8y_version
         run: |
-          echo "c8y_version=$(npm info @c8y/client version)" >> $GITHUB_OUTPUT
+          echo "c8y_version=$(jq -r .version package.json)" >> $GITHUB_OUTPUT
           echo "::debug::Version is ${{ steps.c8y_version.outputs.c8y_version }}"
       - name: Create Build
         run: npm run build-ci --if-present
