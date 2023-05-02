@@ -30,6 +30,7 @@ export class GroupManagementComponent implements OnInit {
 
   async loadData() {
     this.groups = await this.containerservice.getContainerGroups(this.deviceId);
+    console.log(this.groups)
     this.isLoading = false;
   }
 

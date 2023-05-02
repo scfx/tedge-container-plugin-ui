@@ -8,6 +8,6 @@ export class ContainerInfoGuard implements CanActivate {
     route: ActivatedRouteSnapshot
   ): Observable<boolean> | Promise<boolean> | boolean {
     const contextData = route.data.contextData || route.parent.data.contextData;
-    return contextData['serviceType'] == 'container';
+    return contextData['serviceType'] == 'container' || contextData['serviceType'] == 'container-group';
   }
 }

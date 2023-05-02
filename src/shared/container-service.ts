@@ -9,7 +9,7 @@ export class ContainerService {
 
   async getContainers(device: string): Promise<Container[]> {
     const filter = {
-      query: 'serviceType eq container',
+      query: 'serviceType eq container or serviceType eq container-group',
       pageSize: 100,
       withTotalPages: true,
     };
@@ -17,6 +17,9 @@ export class ContainerService {
       .childAdditionsList(device, filter)
       .then(res => res.data.map(mo => this.managedObjectToContainer(mo)));
   }
+
+
+
   async getContainerGroups(device: string): Promise<ContainerGroup[]> {
     return this.getContainers(device).then(res =>
       this.containerToContainerGroups(res)

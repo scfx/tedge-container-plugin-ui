@@ -8,7 +8,7 @@ UI for the tedge-container-plugin ([Link](https://github.com/thin-edge/tedge-con
 
 The plug-in containers 3 tabs that can be added to the device-management application.
 
-| Plug-In                        | Function                                                                                                                   |
+| Plug-In                        |Function                                                                                                                   |
 | ------------------------------ | -------------------------------------------------------------------------------------------------------------------------- |
 | Container Info Tab             | Adds a tab to a container service to display all relevant container information.                                           |
 | Container Management Tab       | Adds a tab to the device to monitor containers. The tab can include/exclude the containers hosted within container groups. |
